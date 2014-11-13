@@ -1,4 +1,7 @@
 Automated Ubuntu 14.04 Build
 ============================
 
-This Fabric projects automated the build of Ubuntu 14.04, set up as a web server
+Fabric project to automate the build of a web server
+
+* Ununbu 14.04
+* Apache / PHP / MySQL
