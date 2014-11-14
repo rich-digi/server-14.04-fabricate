@@ -1,0 +1,27 @@
+# -------------------------------------------------------------------------
+# YAML configuration file for server build : LinNov14a
+# -------------------------------------------------------------------------
+
+machine: {
+    name        : 'linode-a',
+    fqdn        : 'linode-a.apewave.com',
+    root_login  : 'root',
+    root_pwd    : 'oolongT42',
+    ip_address  : '111.222.343.456'
+}
+
+firewall:
+    - 21    # FTP
+    - 22    # SSH
+    - 80    # HTTP
+    - 139   # Samba
+    - 445   # Samba
+    - 3306  # MySQL
+
+mysql: {
+    root_pwd    : 'smokinghotsql',
+    remote_login: 'remote',
+    remote_pwd  : 'Romer8'
+}
+
+samba_pwd: 'pambauser'
