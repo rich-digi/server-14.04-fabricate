@@ -81,6 +81,9 @@ def install_webmin():
 def install_svn_git():
 	run('apt-get install subversion')
 	run('apt-get install git-core')
+	
+	# Configure Git
+	
 
 def install_ftp_clients():
 	run('apt-get install ftp ncftp')
