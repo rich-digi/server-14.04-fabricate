@@ -89,6 +89,9 @@ def install_svn_git():
 	run('apt-get install git-core')
 	
 	# Configure Git
+    # git config --global user.name "Your Name"
+    # git config --global user.email you@example.com
+	
 	
 
 def install_ftp_clients():
