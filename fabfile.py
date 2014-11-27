@@ -2,7 +2,7 @@ from fabric.api import env, run
 import yaml
 
 # Load the YAML configuration file
-f = open('linode-a.yaml', 'r')
+f = open('test.yaml', 'r')
 config = yaml.load(f)
 f.close()
 
@@ -28,7 +28,7 @@ def set_hostname():
 	run('uname -n')
 
 def enable_firewall():
-	# Enable Ubuntu Firewall and allow SSH & MySQL Ports
+	# Enable Ubuntu Firewall and allow SSH & MySQL Ports !INTERACTIVE!
 	run('ufw enable')
 	for port in config['firewall']:
 		run('ufw allow %d' % port)
@@ -56,13 +56,17 @@ def update_sources():
 	run('apt-get update && apt-get upgrade -y')
 
 def install_basics():
+	# !INTERACTIVE! esp. Postfix
 	run('apt-get install zip curl telnet mailutils')
 
 def install_samba():
+	# !INTERACTIVE! - check user is 'www' not root
 	run('apt-get install samba')
 	run('echo -ne "%s\n%s\n" | smbpasswd -a -s $LOGIN' % (config['samba_pwd'], config['samba_pwd']))
 
 def install_mysql():
+	# !INTERACTIVE! - check user is 'www' not root
+	# !INTERACTIVE! - < in CREATE AND GRANT commands from preprepared file - then delete filefab install_webmin
 	run('echo "mysql-server mysql-server/root_password password %s" | sudo debconf-set-selections' % config['mysql']['root_pwd'])
 	run('echo "mysql-server mysql-server/root_password_again password %s" | sudo debconf-set-selections' % config['mysql']['root_pwd'])
 	run('apt-get -y install mysql-server')
@@ -76,9 +80,11 @@ def install_mysql():
 	run('service mysql restart')
 
 def install_webmin():
+	# !INTERACTIVE!
 	run('apt-get install webmin')
 
 def install_svn_git():
+	# !INTERACTIVE!
 	run('apt-get install subversion')
 	run('apt-get install git-core')
 	
@@ -86,6 +92,7 @@ def install_svn_git():
 	
 
 def install_ftp_clients():
+	# !INTERACTIVE!
 	run('apt-get install ftp ncftp')
 	
 def install_ftp_server():

@@ -1,16 +1,27 @@
 # -------------------------------------------------------------------------
-# YAML configuration file for server build : LinNov14a
+# YAML configuration file for server build : scratch.apewave.com
 # -------------------------------------------------------------------------
 
 machine: {
-    fqdn        : 'linnov14a.dmclub.net',
+    name        : 'scratch',
+    fqdn        : 'scratch.apewave.com',
     root_login  : 'root',
-    root_pwd    : 'agholp',
-    ip_address  : '111.222.343.456'
+    root_pwd    : 'scratchpad100',
+    ip_address  : '78.47.44.150'
 }
+
+firewall:
+    - 21    # FTP
+    - 22    # SSH
+    - 80    # HTTP
+    - 139   # Samba
+    - 445   # Samba
+    - 3306  # MySQL
 
 mysql: {
     root_pwd    : 'senegal',
     remote_login: 'remote',
     remote_pwd  : 'Romer8'
 }
+
+samba_pwd: 'pambauser'
